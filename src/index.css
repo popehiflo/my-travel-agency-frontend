@@ -81,6 +81,25 @@ section {
   background: var(--color-bg-white);
 }
 
+.btn-icon-primary {
+  height: 4.5rem;
+  width: 4.5rem;
+  font-size: 2rem;
+  color: var(--color-text-white);
+  background: var(--color-primary);
+  border-radius: 50%;
+  border: var(--border-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-icon-primary:hover {
+  color: var(--color-primary);
+  background: var(--color-text-white);
+}
+
+
 /* media queries */
 @media (max-width: 1200px) {
   html {
