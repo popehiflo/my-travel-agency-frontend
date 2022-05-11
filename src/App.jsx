@@ -1,8 +1,7 @@
 import logo from './logo.svg';
-import './App.css';
 
 const App = () => (
-  <div className="App">
+  <section className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>
@@ -13,7 +12,7 @@ const App = () => (
         and save to reload.
       </p>
       <a
-        className="App-link"
+        className="heading"
         href="https://reactjs.org"
         target="_blank"
         rel="noopener noreferrer"
@@ -21,7 +20,7 @@ const App = () => (
         Learn React
       </a>
     </header>
-  </div>
+  </section>
 );
 
 export default App;
