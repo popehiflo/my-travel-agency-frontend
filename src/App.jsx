@@ -1,26 +1,7 @@
-import logo from './logo.svg';
+import Header from './components/Header';
 
 const App = () => (
-  <section className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit
-        {' '}
-        <code>src/App.js</code>
-        {' '}
-        and save to reload.
-      </p>
-      <a
-        className="btn-primary"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React hahahaha
-      </a>
-    </header>
-  </section>
+  <Header />
 );
 
 export default App;
