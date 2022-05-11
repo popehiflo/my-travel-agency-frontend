@@ -12,7 +12,7 @@ const App = () => (
         and save to reload.
       </p>
       <a
-        className="heading"
+        className="btn-primary"
         href="https://reactjs.org"
         target="_blank"
         rel="noopener noreferrer"

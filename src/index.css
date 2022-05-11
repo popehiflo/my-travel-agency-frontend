@@ -4,15 +4,16 @@
   --color-primary: #1977CC;
   --color-secondary: #1B3954;
   --color-text-white: #fff;
-  --color-white: #fff;
   --color-light: #666;
   --color-primary-light: #a0ccf3;
+  --color-bg-white: #fff;
   --color-bg-light: #eee;
   --color-yellow: #FEB73D;
   --color-green: #14DB8A;
   --border-radius: 1rem;
   --border-primary: 0.2rem solid var(--color-primary);
   --border-primary-light: 0.2rem solid var(--color-primary-light);
+  --border-radius-btn-primary: 2.3rem;
   --secondary-border: 0.2rem solid var(--color-secondary);
   --primary-box-shadow: 0.5rem 0.5rem 0 rgba(25, 119, 204, 0.2);
   --secondary-box-shadow: 0.4rem 0.4rem 0 rgba(27, 57, 84, 0.2);
@@ -60,6 +61,24 @@ section {
 .heading h1 {
   font-size: 4rem;
   color: var(--color-primary);
+}
+
+.btn-primary {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-size: 1.7rem;
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  border: var(--border-primary);
+  border-radius: var(--border-radius-btn-primary);
+  cursor: pointer;
+  width: max-content;
+}
+
+.btn-primary:hover {
+  color: var(--color-primary);
+  background: var(--color-bg-white);
 }
 
 /* media queries */
