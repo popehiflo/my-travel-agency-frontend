@@ -7,6 +7,7 @@ import styledComponents from 'styled-components';
 import logo from '../assets/imgs/logo-icon-gold-text-blue.png';
 
 const HeaderWrapper = styledComponents.header`
+  background: ${({ bg }) => (bg ? 'var(--color-bg-light)' : 'transparent')};
   position: fixed;
   top: 0;
   left: 0;
@@ -63,17 +64,17 @@ const Navbar = styledComponents.nav`
     opacity: 0;
     transform-origin: top right;
     transition: 0.3s ease-in-out;
-  }
-  a {
-    font-size: 2rem;
-    text-align: center;
-    display: block;
-    margin: 2rem;
-  }
-  &.active {
-    transform: scale(1);
-    opacity: 1;
-    transition: 0.3s ease-out;
+    a {
+      font-size: 2rem;
+      text-align: center;
+      display: block;
+      margin: 2rem;
+    }
+    &.active {
+      transform: scale(1);
+      opacity: 1;
+      transition: 0.3s ease-out;
+    }
   }
 `;
 
@@ -94,14 +95,25 @@ const MenuBtn = styledComponents.button`
 `;
 
 const Header = () => {
+  const [colorHeader, setColorHeader] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navMenu = useRef(null);
+  const changeColorHeader = () => {
+    if (window.scrollY > 100) {
+      setColorHeader(true);
+    } else {
+      setColorHeader(false);
+    }
+  };
   const handleClickBtnMenu = () => {
     navMenu.current.classList.toggle('active');
     setIsMenuOpen(!isMenuOpen);
   };
+
+  window.addEventListener('scroll', changeColorHeader);
+
   return (
-    <HeaderWrapper>
+    <HeaderWrapper bg={colorHeader}>
       <NavLink to="/">
         <Logo src={logo} alt="logo munaycha" />
       </NavLink>
