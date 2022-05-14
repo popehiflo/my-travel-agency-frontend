@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import img1 from './assets/imgs/tour01-machupicchu.jpg';
 import img2 from './assets/imgs/tour02-trujillo.jpg';
 import img3 from './assets/imgs/tour03-huacachina.jpg';
+import img4 from './assets/imgs/tour04-arequipa.jpg';
 
 const dataTours = [
   {
@@ -26,9 +27,9 @@ const dataTours = [
   },
   {
     id: uuidv4(),
-    img: `${img3}`,
-    title: 'Psicoterapia de otro doctor',
-    slug: 'psicoterapia-de-otro-doctor',
+    img: `${img4}`,
+    title: 'Descubre el Sur del Perú',
+    slug: 'descubre-el-sur-del-peru',
     duration: {
       days: 4,
       nights: 3,
@@ -42,8 +43,8 @@ const dataTours = [
   {
     id: uuidv4(),
     img: `${img2}`,
-    title: 'Psicoterapia de otro doctor nro 3',
-    slug: 'psicoterapia-de-otro-doctor-nro-3',
+    title: 'Tesoros del Norte del Perú',
+    slug: 'tesoros-del-norte-del-peru',
     duration: {
       days: 4,
       nights: 3,
