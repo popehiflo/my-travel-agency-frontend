@@ -10,6 +10,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 
+import { getToursByBanner } from '../dataFake';
+
 const BannerWrapper = styledComponents.section`
   padding: 0;
 `;
@@ -33,7 +35,7 @@ const SlideImg = styledComponents.img`
 
 const SlideContent = styledComponents.div`
   position: absolute;
-  top: 80%;
+  top: 70%;
   left: 3%;
   color: var(--color-text-white);
   span {
@@ -54,9 +56,7 @@ const SlideContent = styledComponents.div`
 `;
 
 const Banner = () => {
-  const bgImg01 = 'https://swiperjs.com/demos/images/nature-1.jpg';
-  const bgImg02 = 'https://swiperjs.com/demos/images/nature-2.jpg';
-  const bgImg03 = 'https://swiperjs.com/demos/images/nature-3.jpg';
+  const tours = getToursByBanner();
   return (
     <BannerWrapper id="banner">
       <MySwiper
@@ -69,30 +69,16 @@ const Banner = () => {
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide style={styleSwiperSlide}>
-          <SlideImg src={bgImg01} alt="bgImg01" />
-          <SlideContent>
-            <span>Let us explore the beauty of</span>
-            <h3>Machu Picchu 01</h3>
-            <Link to="/" className="btn-primary">Discover</Link>
-          </SlideContent>
-        </SwiperSlide>
-        <SwiperSlide style={styleSwiperSlide}>
-          <SlideImg src={bgImg02} alt="bgImg02" />
-          <SlideContent>
-            <span>Let us explore the beauty of</span>
-            <h3>Machu Picchu 02</h3>
-            <Link to="/" className="btn-primary">Discover</Link>
-          </SlideContent>
-        </SwiperSlide>
-        <SwiperSlide style={styleSwiperSlide}>
-          <SlideImg src={bgImg03} alt="bgImg03" />
-          <SlideContent>
-            <span>Let us explore the beauty of</span>
-            <h3>Machu Picchu 03</h3>
-            <Link to="/" className="btn-primary">Discover</Link>
-          </SlideContent>
-        </SwiperSlide>
+        {tours.map((tour) => (
+          <SwiperSlide key={tour.id} style={styleSwiperSlide}>
+            <SlideImg src={tour.img} alt="tour munaycha explorer" />
+            <SlideContent>
+              <span>Let us explore the beauty of</span>
+              <h3>{tour.title}</h3>
+              <Link to="/" className="btn-primary">Discover</Link>
+            </SlideContent>
+          </SwiperSlide>
+        ))}
       </MySwiper>
     </BannerWrapper>
   );

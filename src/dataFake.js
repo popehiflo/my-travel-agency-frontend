@@ -26,7 +26,7 @@ const dataTours = [
   },
   {
     id: uuidv4(),
-    img: 'https://i.ibb.co/L52MdQ3/psycoterapy-img.png',
+    img: `${img3}`,
     title: 'Psicoterapia de otro doctor',
     slug: 'psicoterapia-de-otro-doctor',
     duration: {
@@ -56,7 +56,7 @@ const dataTours = [
   },
   {
     id: uuidv4(),
-    img: `${img3}`,
+    img: 'https://i.ibb.co/L52MdQ3/psycoterapy-img.png',
     title: 'Terapia nro 4',
     slug: 'terapia-nro-4',
     duration: {
