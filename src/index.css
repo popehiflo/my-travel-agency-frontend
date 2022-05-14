@@ -91,6 +91,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0.3rem;
 }
 
 .btn-icon-primary:hover {
