@@ -1,10 +1,12 @@
 import { BrowserRouter } from 'react-router-dom';
+import Banner from './components/Banner';
 import Header from './components/Header';
 
 const App = () => (
   <BrowserRouter>
     <Header />
-    <p>
+    <Banner />
+    <section>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
       voluptatibus quas nulla natus nesciunt ex odio nam cumque tenetur suscipit
       ipsum ipsam deserunt, repellendus cum repudiandae minus? Blanditiis, quos
@@ -3212,7 +3214,7 @@ const App = () => (
       ut. Quo, quae. Vel, culpa aut modi quibusdam provident optio minima quo
       vero. Quasi vel quam amet labore consequuntur ex eligendi illo quibusdam
       incidunt laboriosam asperiores consectetur minima, officiis maxime ullam.
-    </p>
+    </section>
   </BrowserRouter>
 );
 
