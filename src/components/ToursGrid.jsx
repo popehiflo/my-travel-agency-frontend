@@ -1,5 +1,6 @@
 import React from 'react';
 import styledComponents from 'styled-components';
+import { getToursByPopularity } from '../dataFake';
 
 const GridWrapper = styledComponents.div`
   background: var(--color-bg-light); //quitar esto luego
@@ -8,8 +9,15 @@ const GridWrapper = styledComponents.div`
   gap: 1.5rem;
 `;
 
-const ToursGrid = () => (
-  <GridWrapper>ToursGrid</GridWrapper>
-);
+const ToursGrid = () => {
+  const tours = getToursByPopularity();
+  return (
+    <GridWrapper>
+      {tours.map((tour) => (
+        <pre>{JSON.stringify(tour, null, 2)}</pre>
+      ))}
+    </GridWrapper>
+  );
+};
 
 export default ToursGrid;
