@@ -8,7 +8,7 @@ const App = () => (
   <BrowserRouter>
     <Header />
     <Banner />
-    <section style={{ background: 'red' }}>
+    <section>
       <ToursGrid />
     </section>
     <Footer />
