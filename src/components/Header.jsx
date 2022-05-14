@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import styledComponents from 'styled-components';
-import logo from '../assets/imgs/logo-icon-gold-text-blue.png';
+import logo from '../assets/imgs/logo-icon-mytravel-gold-text-blue.svg';
 
 const HeaderWrapper = styledComponents.header`
   background: ${({ bg }) => (bg ? 'var(--color-bg-light)' : 'transparent')};
