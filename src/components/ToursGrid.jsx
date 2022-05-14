@@ -1,6 +1,7 @@
 import React from 'react';
 import styledComponents from 'styled-components';
 import { getToursByPopularity } from '../dataFake';
+import TourCard from './TourCard';
 
 const GridWrapper = styledComponents.div`
   background: var(--color-bg-light); //quitar esto luego
@@ -14,7 +15,7 @@ const ToursGrid = () => {
   return (
     <GridWrapper>
       {tours.map((tour) => (
-        <pre>{JSON.stringify(tour, null, 2)}</pre>
+        <TourCard key={tour.id} tour={tour} />
       ))}
     </GridWrapper>
   );
