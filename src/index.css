@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
+/* https://www.schemecolor.com/notes-that-fell.php */
+
 :root {
-  --color-primary: #1977CC;
+  --color-primary: #3279BD;
   --color-secondary: #1B3954;
   --color-text-white: #fff;
   --color-light: #666;
@@ -13,6 +15,7 @@
   --border-radius: 1rem;
   --border-primary: 0.2rem solid var(--color-primary);
   --border-primary-light: 0.2rem solid var(--color-primary-light);
+  --border-primary-white: 0.2rem solid var(--color-text-white);
   --border-radius-btn-primary: 2.3rem;
   --secondary-border: 0.2rem solid var(--color-secondary);
   --primary-box-shadow: 0.5rem 0.5rem 0 rgba(25, 119, 204, 0.2);
@@ -91,6 +94,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0.3rem;
 }
 
 .btn-icon-primary:hover {
