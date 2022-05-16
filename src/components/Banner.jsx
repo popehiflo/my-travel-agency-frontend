@@ -23,10 +23,6 @@ const MySwiper = styledComponents(Swiper)`
   overflow: hidden;
 `;
 
-const styleSwiperSlide = {
-  background: 'red',
-};
-
 const SlideImg = styledComponents.img`
   width: 100%;
   height: 100%;
@@ -58,7 +54,7 @@ const SlideContent = styledComponents.div`
 const Banner = () => {
   const tours = getToursByBanner();
   return (
-    <BannerWrapper id="banner">
+    <BannerWrapper id="home">
       <MySwiper
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         effect="fade"
@@ -70,7 +66,7 @@ const Banner = () => {
         className="mySwiper"
       >
         {tours.map((tour) => (
-          <SwiperSlide key={tour.id} style={styleSwiperSlide}>
+          <SwiperSlide key={tour.id}>
             <SlideImg src={tour.img} alt="tour munaycha explorer" />
             <SlideContent>
               <span>Let us explore the beauty of</span>

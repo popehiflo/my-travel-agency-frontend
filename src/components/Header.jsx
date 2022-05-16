@@ -7,7 +7,7 @@ import styledComponents from 'styled-components';
 import logo from '../assets/imgs/logo-icon-mytravel-gold-text-blue.svg';
 
 const HeaderWrapper = styledComponents.header`
-  background: ${({ bg }) => (bg ? 'var(--color-bg-light)' : 'transparent')};
+  background: ${({ bg }) => (bg ? 'var(--color-bg-white)' : 'transparent')};
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@ const HeaderWrapper = styledComponents.header`
   justify-content: space-between;
   padding: 1rem 9%;
   z-index: 100;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ bg }) => (bg ? '0 0.5rem 1.5rem rgba(0, 0, 0, 0.3)' : 'none')};;
   @media (max-width: 1200px) {
     padding: 1rem 2rem;
   }
@@ -121,7 +121,7 @@ const Header = () => {
         <Navbar ref={navMenu}>
           <NavHashLink to="/#home">Home</NavHashLink>
           <NavHashLink to="/#home">About</NavHashLink>
-          <NavHashLink to="/#home">Tours</NavHashLink>
+          <NavHashLink to="/#tours">Tours</NavHashLink>
           <NavHashLink to="/#home">NavHashLink</NavHashLink>
           <NavLink to="account/sign-in">Login</NavLink>
         </Navbar>
