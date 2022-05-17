@@ -43,6 +43,21 @@ html {
   scroll-padding-top: 2rem;
 }
 
+html::-webkit-scrollbar {
+  width: 0.8rem;
+  background: var(--color-bg-light)
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0.5;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2rem;
+}
+
 body {
   background: var(--color-bg-light);
   overflow-x: hidden;
@@ -80,6 +95,11 @@ section {
 }
 
 .btn-primary:hover {
+  color: var(--color-primary);
+  background: var(--color-bg-white);
+}
+
+.btn-primary:active {
   color: var(--color-primary);
   background: var(--color-bg-white);
 }
