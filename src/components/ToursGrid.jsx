@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styledComponents from 'styled-components';
-import { getToursByPopularity } from '../dataFake';
 import TourCard from './TourCard';
 
 const GridWrapper = styledComponents.div`
@@ -9,15 +9,19 @@ const GridWrapper = styledComponents.div`
   gap: 1.5rem;
 `;
 
-const ToursGrid = () => {
-  const tours = getToursByPopularity();
+const ToursGrid = (props) => {
+  const { tours } = props;
   return (
     <GridWrapper>
-      {tours.map((tour) => (
+      {tours?.map((tour) => (
         <TourCard key={tour.id} tour={tour} />
       ))}
     </GridWrapper>
   );
+};
+
+ToursGrid.propTypes = {
+  tours: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default ToursGrid;

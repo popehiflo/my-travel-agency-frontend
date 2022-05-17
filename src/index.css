@@ -14,6 +14,7 @@
   --color-green: #14DB8A;
   --border-radius: 1rem;
   --border-primary: 0.2rem solid var(--color-primary);
+  --border-secondary: 0.2rem solid var(--color-secondary);
   --border-primary-light: 0.2rem solid var(--color-primary-light);
   --border-primary-white: 0.2rem solid var(--color-text-white);
   --border-radius-btn-primary: 2.3rem;
@@ -40,6 +41,21 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+  background: var(--color-bg-light)
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0.5;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2rem;
 }
 
 body {
@@ -80,6 +96,28 @@ section {
 
 .btn-primary:hover {
   color: var(--color-primary);
+  background: var(--color-bg-white);
+}
+
+.btn-primary:active {
+  color: var(--color-primary);
+  background: var(--color-bg-white);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-size: 1.7rem;
+  background: var(--color-secondary);
+  color: var(--color-text-white);
+  border: var(--border-secondary);
+  border-radius: var(--border-radius-btn-primary);
+  cursor: pointer;
+  width: max-content;
+}
+
+.btn-secondary:hover {
+  color: var(--color-secondary);
   background: var(--color-bg-white);
 }
 

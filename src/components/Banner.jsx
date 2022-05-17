@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import styledComponents from 'styled-components';
@@ -9,8 +10,6 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
-
-import { getToursByBanner } from '../dataFake';
 
 const BannerWrapper = styledComponents.section`
   padding: 0;
@@ -22,10 +21,6 @@ const MySwiper = styledComponents(Swiper)`
   position: relative;
   overflow: hidden;
 `;
-
-const styleSwiperSlide = {
-  background: 'red',
-};
 
 const SlideImg = styledComponents.img`
   width: 100%;
@@ -55,10 +50,11 @@ const SlideContent = styledComponents.div`
   }
 `;
 
-const Banner = () => {
-  const tours = getToursByBanner();
+const Banner = ({ data, idHash, content }) => {
+  const tours = data;
+  const hash = idHash;
   return (
-    <BannerWrapper id="banner">
+    <BannerWrapper id={hash}>
       <MySwiper
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         effect="fade"
@@ -70,18 +66,24 @@ const Banner = () => {
         className="mySwiper"
       >
         {tours.map((tour) => (
-          <SwiperSlide key={tour.id} style={styleSwiperSlide}>
-            <SlideImg src={tour.img} alt="tour munaycha explorer" />
+          <SwiperSlide key={tour.id}>
+            <SlideImg src={tour.imgs[0]} alt="tour munaycha explorer" />
             <SlideContent>
-              <span>Let us explore the beauty of</span>
+              {content && <span>Let us explore the beauty of</span>}
               <h3>{tour.title}</h3>
-              <Link to="/" className="btn-primary">Discover</Link>
+              {content && <Link to="/" className="btn-primary">Discover</Link>}
             </SlideContent>
           </SwiperSlide>
         ))}
       </MySwiper>
     </BannerWrapper>
   );
+};
+
+Banner.propTypes = {
+  data: PropTypes.instanceOf(Array).isRequired,
+  idHash: PropTypes.string.isRequired,
+  content: PropTypes.bool.isRequired,
 };
 
 export default Banner;

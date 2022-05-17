@@ -1,14 +1,29 @@
-import { BrowserRouter } from 'react-router-dom';
-import Banner from './components/Banner';
-import Footer from './components/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Tours from './pages/Tours';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Tour from './pages/Tour';
 
 const App = () => (
   <BrowserRouter>
     <Header />
-    <Banner />
-    <Tours />
+
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/account/sign-in" element={<SignIn />} />
+      <Route path="/account/sign-up" element={<SignUp />} />
+      <Route path="/test-nested" element={<h1 style={{ marginTop: '100px' }}>Test Nested</h1>}>
+        <Route path="nested-a" element={<h1 style={{ marginTop: '100px' }}>Nested AAA</h1>} />
+        <Route path="nested-b" element={<h1 style={{ marginTop: '100px' }}>Nested BBB</h1>} />
+      </Route>
+      <Route path="/cart" element={<h1 style={{ marginTop: '100px' }}>Cart</h1>} />
+      <Route path="tours-peru/:slug" element={<Tour />} />
+      <Route path="/admin-panel" element={<h1 style={{ marginTop: '100px' }}>Admin Panel</h1>} />
+      <Route path="*" element={<h1 style={{ marginTop: '100px' }}>404</h1>} />
+    </Routes>
+
     <Footer />
   </BrowserRouter>
 );
