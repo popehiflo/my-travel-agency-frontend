@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faDollarSign, faGripLinesVertical, faHeart, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import styledComponents from 'styled-components';
+import defaultImage from '../assets/imgs/default-image.jpg';
 
 const TourCardWrapper = styledComponents.div`
   background: var(--color-bg-white);
@@ -83,13 +84,13 @@ const borderWhite = {
 };
 
 const TourCard = ({ tour }) => {
-  const { id, slug, information } = tour;
+  const { slug, information } = tour;
   const litleInformation = information.slice(0, 100);
   return (
     <TourCardWrapper className="box-tour">
       <TourCardInfo className="box__tour">
         <CardInfoImage className="image">
-          <img src={tour.img} alt="" />
+          <img src={tour.imgs[0]} alt={tour.title} />
           <div className="image-icons">
             <Link to="/" className="btn-icon-primary">
               <FontAwesomeIcon icon={faHeart} />
@@ -101,17 +102,17 @@ const TourCard = ({ tour }) => {
         </CardInfoImage>
         <CardInfoContent className="content">
           <h3>{tour.title}</h3>
-          {/* FIXME: mostrar solo 90 caracteres de description en p,con JS */}
+          {/* FIXME: mostrar solo 90/100 caracteres de description en p,con JS */}
           <p>{`${litleInformation} ...`}</p>
           <ContentIcons className="icons">
             <span className="day">
               <FontAwesomeIcon icon={faSun} />
-              {` ${tour.duration.days} dias`}
+              {` ${tour.duration.days} days`}
             </span>
             <FontAwesomeIcon icon={faGripLinesVertical} style={{ fontSize: '1.5rem', margin: '0 0.6rem' }} />
             <span className="night">
               <FontAwesomeIcon icon={faMoon} />
-              {` ${tour.duration.nights} noches`}
+              {` ${tour.duration.nights} nights`}
             </span>
             <FontAwesomeIcon icon={faGripLinesVertical} style={{ fontSize: '1.5rem', margin: '0 0.6rem' }} />
             <span className="money">
@@ -123,8 +124,8 @@ const TourCard = ({ tour }) => {
       </TourCardInfo>
       <TourCardButtons className="box__buttons">
         {/* TODO: podria enviar solo el slug (siempre y cuando sea unico) */}
-        <Link to={`/tours-peru/${id}/${slug}`} className="btn-primary" style={borderWhite}>
-          Saber más del tour
+        <Link to={`/tours-peru/${slug}`} className="btn-primary" style={borderWhite}>
+          Learn more about the tour
         </Link>
       </TourCardButtons>
     </TourCardWrapper>
@@ -134,7 +135,7 @@ const TourCard = ({ tour }) => {
 TourCard.propTypes = {
   tour: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    img: PropTypes.string,
+    imgs: PropTypes.instanceOf(Array),
     title: PropTypes.string,
     slug: PropTypes.string,
     price: PropTypes.number,
@@ -148,7 +149,9 @@ TourCard.propTypes = {
 
 TourCard.defaultProps = {
   tour: {
-    img: '',
+    imgs: [
+      defaultImage,
+    ],
     title: '',
     slug: 'slug-por-defecto',
     price: 0,
