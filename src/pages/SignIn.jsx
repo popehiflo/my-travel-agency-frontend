@@ -1,3 +1,5 @@
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styledComponents from 'styled-components';
@@ -25,9 +27,9 @@ const FormLogin = styledComponents.form`
   .btn-primary {
     width: 100%;
     text-align: center;
+    margin-bottom: 2rem;
   }
   p {
-    padding-top: 2rem;
     font-size: 1.5rem;
     color: var(--color-secondary);
     text-align: center;
@@ -54,6 +56,12 @@ const SignIn = () => (
   <LoginWrapper>
     <FormLogin>
       <h3>Sign In</h3>
+      <Link to="/" className="btn-primary">
+        <FontAwesomeIcon icon={faGoogle} />
+        {' Sign In with Google'}
+      </Link>
+      <hr style={{ border: '0.2rem solid var(--color-secondary)', margingBottom: '1rem' }} />
+      <p>Or</p>
       <FormInput type="email" name="" placeholder="enter your email" />
       <FormInput type="password" name="" placeholder="enter your password" />
       <input type="submit" value="Sign In" className="btn-primary" />
