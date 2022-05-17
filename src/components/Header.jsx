@@ -120,9 +120,9 @@ const Header = () => {
       <NavWrapper>
         <Navbar ref={navMenu}>
           <NavHashLink to="/#home">Home</NavHashLink>
-          <NavHashLink to="/#home">About</NavHashLink>
+          <NavHashLink to="/#about">About</NavHashLink>
           <NavHashLink to="/#tours">Tours</NavHashLink>
-          <NavHashLink to="/#home">NavHashLink</NavHashLink>
+          <NavHashLink to="/#other">NavHashLink</NavHashLink>
           <NavLink to="account/sign-in">Login</NavLink>
         </Navbar>
         <NavLink to="account/sign-in" className="btn-primary">Sign In</NavLink>
