@@ -192,3 +192,45 @@ export function getToursByPopularity() {
 export function getToursByBanner() {
   return dataTours.filter((item) => item.banner);
 }
+
+const dataTypeTours = [
+  {
+    id: uuidv4(),
+    img: `${img1}`,
+    title: 'Adventure',
+  },
+  {
+    id: uuidv4(),
+    img: `${img2}`,
+    title: 'Cultural',
+  },
+  {
+    id: uuidv4(),
+    img: `${img3}`,
+    title: 'Gastronomy',
+  },
+  {
+    id: uuidv4(),
+    img: `${img4}`,
+    title: 'Wellness',
+  },
+  {
+    id: uuidv4(),
+    img: `${imgDefault}`,
+    title: 'Local Living',
+  },
+  {
+    id: uuidv4(),
+    img: 'https://i.ibb.co/L52MdQ3/psycoterapy-img.png',
+    title: 'Luxury',
+  },
+  {
+    id: uuidv4(),
+    img: 'https://i.ibb.co/L52MdQ3/psycoterapy-img.png',
+    title: 'Trip Type 6',
+  },
+];
+
+export function getAllTypeTours() {
+  return dataTypeTours;
+}
