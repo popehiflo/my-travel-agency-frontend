@@ -140,6 +140,13 @@ section {
   background: var(--color-text-white);
 }
 
+.swiper-pagination-bullet{
+  background-color: var(--color-bg-white);
+}
+
+.swiper-pagination-bullet-active{
+  background-color: var(--color-primary);
+}
 
 /* media queries */
 @media (max-width: 1200px) {

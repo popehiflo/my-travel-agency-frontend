@@ -192,3 +192,52 @@ export function getToursByPopularity() {
 export function getToursByBanner() {
   return dataTours.filter((item) => item.banner);
 }
+
+const dataTypeTours = [
+  {
+    id: uuidv4(),
+    img: `${img1}`,
+    title: 'Adventure',
+    description: 'Whether you prefer horse riding, birdwatching, hiking, or ziplining, we have the perfect adventure travel package for you! If that entails getting totally off the beaten track in the Amazon, or visiting remote, far off communities in The Andes, there are an abundance of adventure tours available in Peru.',
+  },
+  {
+    id: uuidv4(),
+    img: `${img2}`,
+    title: 'Cultural',
+    description: 'Whether you prefer horse riding, birdwatching, hiking, or ziplining, we have the perfect adventure travel package for you! If that entails getting totally off the beaten track in the Amazon, or visiting remote, far off communities in The Andes, there are an abundance of adventure tours available in Peru.',
+  },
+  {
+    id: uuidv4(),
+    img: `${img3}`,
+    title: 'Gastronomy',
+    description: 'Whether you prefer horse riding, birdwatching, hiking, or ziplining, we have the perfect adventure travel package for you! If that entails getting totally off the beaten track in the Amazon, or visiting remote, far off communities in The Andes, there are an abundance of adventure tours available in Peru.',
+  },
+  {
+    id: uuidv4(),
+    img: `${img4}`,
+    title: 'Wellness',
+    description: 'Whether you prefer horse riding, birdwatching, hiking, or ziplining, we have the perfect adventure travel package for you! If that entails getting totally off the beaten track in the Amazon, or visiting remote, far off communities in The Andes, there are an abundance of adventure tours available in Peru.',
+  },
+  {
+    id: uuidv4(),
+    img: `${imgDefault}`,
+    title: 'Local Living',
+    description: 'Whether you prefer horse riding, birdwatching, hiking, or ziplining, we have the perfect adventure travel package for you! If that entails getting totally off the beaten track in the Amazon, or visiting remote, far off communities in The Andes, there are an abundance of adventure tours available in Peru.',
+  },
+  {
+    id: uuidv4(),
+    img: 'https://i.ibb.co/L52MdQ3/psycoterapy-img.png',
+    title: 'Luxury',
+    description: 'Loremipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: uuidv4(),
+    img: 'https://i.ibb.co/L52MdQ3/psycoterapy-img.png',
+    title: 'Tour Type 6',
+    description: 'Loremipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+];
+
+export function getAllTypeTours() {
+  return dataTypeTours;
+}
