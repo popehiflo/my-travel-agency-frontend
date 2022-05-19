@@ -10,6 +10,8 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
+import arrowLeft from '../assets/imgs/circle-chevron-left-solid.svg';
+import arrowRight from '../assets/imgs/circle-chevron-right-solid.svg';
 
 const BannerWrapper = styledComponents.section`
   padding: 0;
@@ -20,6 +22,40 @@ const MySwiper = styledComponents(Swiper)`
   width: 100%;
   position: relative;
   overflow: hidden;
+  .swiper-button-prev {
+    background-image: url(${arrowLeft});
+    background-color: var(--color-bg-white);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin: auto -0.8rem;
+  }
+  .swiper-button-next {
+    background-image: url(${arrowRight});
+    background-color: var(--color-bg-white);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin: 0 -0.8rem;
+  }
+  .swiper-button-prev::after {
+    display: none;
+  }
+  .swiper-button-next::after {
+    display: none;
+  }
+  .swiper-pagination-bullet {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--color-bg-white);
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--color-primary);
+  }
 `;
 
 const SlideImg = styledComponents.img`
@@ -58,7 +94,6 @@ const Banner = ({ data, idHash, content }) => {
       <MySwiper
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         effect="fade"
-        navigation
         pagination={{ clickable: true }}
         grabCursor
         loop
