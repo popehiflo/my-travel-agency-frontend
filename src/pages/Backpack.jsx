@@ -21,7 +21,18 @@ const BackpackCard = styledComponents.div`
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--primary-box-shadow);
   box-shadow: var(--primary-box-shadow);
-
+  position: relative;
+  svg {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.7rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    :hover {
+      color: var(--color-secondary);
+    }
+  }
 `;
 
 const Backpack = () => (
