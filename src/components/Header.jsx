@@ -126,7 +126,7 @@ const Header = () => {
           <NavLink to="account/sign-in">Login</NavLink>
         </Navbar>
         <NavLink to="account/sign-in" className="btn-primary">Sign In</NavLink>
-        <NavLink to="cart" style={BtnIcon} type="button" aria-label="Open Shopping Cart">
+        <NavLink to="backpack" style={BtnIcon} type="button" aria-label="Open Shopping Cart">
           <FontAwesomeIcon icon={faShoppingCart} />
         </NavLink>
         <MenuBtn style={BtnIcon} type="button" onClick={handleClickBtnMenu} id="menu-btn" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}>
