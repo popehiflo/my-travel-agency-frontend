@@ -33,7 +33,8 @@ const TourTypesSlider = styledComponents(Swiper)`
     margin-bottom: 4rem;
     .box-button:hover {
       p {
-        display: block;
+        min-height: 48rem;
+        opacity: 1;
       }
     }
     }
@@ -95,7 +96,9 @@ const SlideBoxButton = styledComponents.div`
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
-    display: none;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    opacity: 0;
+    transition: all 0.3s linear;
   }
   div {
     background-color: var(--color-primary);
@@ -142,7 +145,7 @@ const TourTypes = () => {
               <SlideBoxButton className="box-button">
                 <p>{typeTour.description}</p>
                 <div>
-                  <Link to="/cart" className="btn-primary" style={borderWhite}>
+                  <Link to="/tours" className="btn-primary" style={borderWhite}>
                     <FontAwesomeIcon icon={faSearch} />
                     {` ${typeTour.title}`}
                   </Link>

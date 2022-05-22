@@ -3,17 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styledComponents from 'styled-components';
+import imgDefault from '../assets/imgs/default-image-urubamba.jpg';
 
 const LoginWrapper = styledComponents.section`
   height: 100vh;
-  background: var(--color-bg-white);
+  background: url(${imgDefault}) no-repeat center center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const FormLogin = styledComponents.form`
-  background: var(--color-bg-light);
+  background: rgba(255, 255, 255, 0.7);
   max-width: 40rem;
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--primary-box-shadow);

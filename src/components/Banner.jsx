@@ -102,11 +102,11 @@ const Banner = ({ data, idHash, content }) => {
       >
         {tours.map((tour) => (
           <SwiperSlide key={tour.id}>
-            <SlideImg src={tour.imgs[0]} alt="tour munaycha explorer" />
+            <SlideImg src={tour.imgs[0]} alt="My Travel Agency by popehiflo" />
             <SlideContent>
-              {content && <span>Let us explore the beauty of</span>}
+              {content && <span>Let&lsquo;s explore the beauty of</span>}
               <h3>{tour.title}</h3>
-              {content && <Link to="/" className="btn-primary">Discover</Link>}
+              {content && <Link to="/tours" className="btn-primary">Discover</Link>}
             </SlideContent>
           </SwiperSlide>
         ))}

@@ -7,7 +7,7 @@ import styledComponents from 'styled-components';
 import logo from '../assets/imgs/logo-icon-mytravel-gold-text-blue.svg';
 
 const HeaderWrapper = styledComponents.header`
-  background: ${({ bg }) => (bg ? 'var(--color-bg-white)' : 'transparent')};
+  background: ${({ bg }) => (bg ? 'var(--color-bg-white)' : 'rgba(255, 255, 255, 0.3)')};
   position: fixed;
   top: 0;
   left: 0;
@@ -121,12 +121,12 @@ const Header = () => {
         <Navbar ref={navMenu}>
           <NavHashLink to="/#home">Home</NavHashLink>
           <NavHashLink to="/#about">About</NavHashLink>
-          <NavHashLink to="/#tours">Tours</NavHashLink>
+          <NavLink to="/tours">Tours</NavLink>
           <NavHashLink to="/#other">NavHashLink</NavHashLink>
           <NavLink to="account/sign-in">Login</NavLink>
         </Navbar>
         <NavLink to="account/sign-in" className="btn-primary">Sign In</NavLink>
-        <NavLink to="cart" style={BtnIcon} type="button" aria-label="Open Shopping Cart">
+        <NavLink to="backpack" style={BtnIcon} type="button" aria-label="Open Shopping Cart">
           <FontAwesomeIcon icon={faShoppingCart} />
         </NavLink>
         <MenuBtn style={BtnIcon} type="button" onClick={handleClickBtnMenu} id="menu-btn" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}>
