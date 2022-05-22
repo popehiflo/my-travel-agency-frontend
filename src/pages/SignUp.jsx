@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styledComponents from 'styled-components';
+import imgDefault from '../assets/imgs/default-image-urubamba.jpg';
 
 const RegisterWrapper = styledComponents.section`
   height: 100vh;
-  background: var(--color-bg-white);
+  background: url(${imgDefault}) no-repeat center center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const FormRegister = styledComponents.form`
-  background: var(--color-bg-light);
+  background: rgba(255, 255, 255, 0.7);
   max-width: 40rem;
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--primary-box-shadow);
@@ -58,6 +60,10 @@ const SignUp = () => (
       <FormInput type="email" name="" placeholder="enter your email" />
       <FormInput type="password" name="" placeholder="enter your password" />
       <FormInput type="password" name="" placeholder="re-enter your password" />
+      <p style={{ marginTop: '-1rem' }}>
+        By creating an account.
+        I consent to the processing of my personal data in accodance with the PRIVACY POLICY
+      </p>
       <input type="submit" value="Sign Up" className="btn-primary" />
       <p>Already have an account?</p>
       <Link to="/account/sign-in" className="btn-secondary">Sign In</Link>
