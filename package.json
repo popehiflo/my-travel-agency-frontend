@@ -42,6 +42,10 @@
     "lint:fix": "eslint --ext .js,.jsx src/ --fix",
     "prepare": "husky install"
   },
+  "volta": {
+    "node": "16.15.0",
+    "npm": "8.5.5"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
