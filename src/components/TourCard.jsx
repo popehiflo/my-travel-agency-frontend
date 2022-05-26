@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faDollarSign, faGripLinesVertical, faHeart, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCartPlus,
+  faPersonHiking,
+  faGripLinesVertical,
+  faHeart, faMoon, faSun, faEarthAmericas,
+} from '@fortawesome/free-solid-svg-icons';
 import styledComponents from 'styled-components';
 import defaultImage from '../assets/imgs/default-image.jpg';
 
@@ -61,6 +66,7 @@ const ContentIcons = styledComponents.div`
   width: max-content;
   border-radius: var(--border-radius-btn-primary);
   padding: 0.6rem 1.5rem;
+  margin-top: 0.3rem;
   span {
     font-size: 1.7rem;
     color: var(--color-secondary);
@@ -107,24 +113,31 @@ const TourCard = ({ tour }) => {
           <ContentIcons className="icons">
             <span className="day">
               <FontAwesomeIcon icon={faSun} />
-              {` ${tour.duration.days} days`}
+              {` ${tour.days} days`}
             </span>
             <FontAwesomeIcon icon={faGripLinesVertical} style={{ fontSize: '1.5rem', margin: '0 0.6rem' }} />
             <span className="night">
               <FontAwesomeIcon icon={faMoon} />
-              {` ${tour.duration.nights} nights`}
+              {` ${tour.nights} nights`}
             </span>
-            <FontAwesomeIcon icon={faGripLinesVertical} style={{ fontSize: '1.5rem', margin: '0 0.6rem' }} />
-            <span className="money">
-              <FontAwesomeIcon icon={faDollarSign} />
-              {` ${tour.price}`}
+          </ContentIcons>
+          <ContentIcons className="icons">
+            <span style={{ textTransform: 'capitalize' }}>
+              <FontAwesomeIcon icon={faPersonHiking} />
+              {tour.categories.map((category) => ` ${category} `)}
+            </span>
+          </ContentIcons>
+          <ContentIcons className="icons">
+            <span style={{ textTransform: 'capitalize' }}>
+              <FontAwesomeIcon icon={faEarthAmericas} />
+              {tour.country.map((pais) => ` ${pais} `)}
             </span>
           </ContentIcons>
         </CardInfoContent>
       </TourCardInfo>
       <TourCardButtons className="box__buttons">
         {/* TODO: podria enviar solo el slug (siempre y cuando sea unico) */}
-        <Link to={`/tours-peru/${slug}`} className="btn-primary" style={borderWhite}>
+        <Link to={`/tour/${slug}`} className="btn-primary" style={borderWhite}>
           Learn more about the tour
         </Link>
       </TourCardButtons>
@@ -134,15 +147,15 @@ const TourCard = ({ tour }) => {
 
 TourCard.propTypes = {
   tour: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     imgs: PropTypes.instanceOf(Array),
+    categories: PropTypes.instanceOf(Array),
+    country: PropTypes.instanceOf(Array),
     title: PropTypes.string,
-    slug: PropTypes.string,
+    slug: PropTypes.string.isRequired,
     price: PropTypes.number,
-    duration: PropTypes.shape({
-      days: PropTypes.number,
-      nights: PropTypes.number,
-    }),
+    days: PropTypes.number,
+    nights: PropTypes.number,
     information: PropTypes.string,
   }),
 };
