@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styledComponents from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import imgDefault from '../assets/imgs/default-image.jpg';
 
 const BackpackCardWrapper = styledComponents.div`
   background: var(--color-bg-white);
@@ -47,7 +47,7 @@ const CardContent = styledComponents.div`
     color: var(--color-primary);
     padding: 1rem 1rem 0 1rem;
   }
-  form {
+  .info {
     padding: 1rem 2rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -68,41 +68,50 @@ const CardContent = styledComponents.div`
     }
   }
   .price {
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius);
+    border: var(--border-primary);
+    padding: 1rem 0;
+    text-align: center;
     font-size: 2rem;
     color: var(--color-primary);
+    font-weight: bold;
   }
 `;
 
-const BackpackCard = () => {
+const BackpackCard = ({ item }) => {
   const handleOnClick = () => {
     alert('clicked');
   };
+  console.log(item);
   return (
     <BackpackCardWrapper>
       <CardImage>
         <FontAwesomeIcon icon={faTimes} onClick={handleOnClick} />
-        <img src={imgDefault} alt="" />
+        <img src={item.imgs[0]} alt="" />
       </CardImage>
       <CardContent>
-        <h3>TITLE TOUR COMPLETAMENTE LARGO, ES UN EJEMPLO DE LOS TOURS CON NOMBRE LARGO</h3>
-        <form action="">
+        <h3>{item.title}</h3>
+        <div className="info">
           <label htmlFor="pax">
             {'persons: '}
-            <input type="number" name="" value="1" id="pax" style={{ width: '7rem' }} />
+            <input type="number" name="" value={item.quantity} id="pax" style={{ width: '7rem' }} />
           </label>
           <label htmlFor="check-in">
             {'check in: '}
             <input type="date" name="" value="" id="check-in" style={{ width: '20rem' }} />
           </label>
-        </form>
+        </div>
         <div className="price">
-          $249.99
-          {' '}
-          <span>$399.99</span>
+          {item.quantity * item.price}
         </div>
       </CardContent>
     </BackpackCardWrapper>
   );
+};
+
+BackpackCard.propTypes = {
+  item: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default BackpackCard;
