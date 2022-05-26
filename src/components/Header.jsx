@@ -1,6 +1,7 @@
 import { faBars, faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import styledComponents from 'styled-components';
@@ -97,6 +98,7 @@ const MenuBtn = styledComponents.button`
 const Header = () => {
   const [colorHeader, setColorHeader] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const quantity = useSelector((state) => state.backpack.quantity);
   const navMenu = useRef(null);
   const changeColorHeader = () => {
     if (window.scrollY > 100) {
@@ -127,7 +129,11 @@ const Header = () => {
         </Navbar>
         <NavLink to="account/sign-in" className="btn-primary">Sign In</NavLink>
         <NavLink to="backpack" style={BtnIcon} type="button" aria-label="Open Shopping Cart">
-          <FontAwesomeIcon icon={faShoppingCart} />
+          {
+          quantity > 0
+            ? <FontAwesomeIcon icon={faShoppingCart} style={{ color: 'var(--color-primary)' }} bounce />
+            : <FontAwesomeIcon icon={faShoppingCart} />
+          }
         </NavLink>
         <MenuBtn style={BtnIcon} type="button" onClick={handleClickBtnMenu} id="menu-btn" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}>
           <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
