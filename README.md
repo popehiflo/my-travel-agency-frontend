@@ -1,6 +1,6 @@
 # My Travel Agency
 <div align="center">
-  <img src="https://i.ibb.co/19rVDVH/logo-icon-gold-text-blue.png" />
+  <img src="https://i.ibb.co/cgLRfkB/logo-icon-mytravel-gold-text-blue.png" />
   <h2 align="center">My Travel Agency</h2>
 
   My Travel Agency is fully responsive travel app web or tour operator, <br />Responsive for all devices, built using ReactJS.

@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+// import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styledComponents from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,10 +12,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faClock, faDollarSign, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faClock, faDollarSign, faHeart, faPersonHiking, faSignal } from '@fortawesome/free-solid-svg-icons';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
-import { getTourBySlug } from '../dataFake';
+// import { getTourBySlug } from '../dataFake';
 import Accordion from '../components/Accordion';
+import { publicRequest } from '../services/request';
 
 const TourImages = styledComponents.div`
   padding: 0;
@@ -114,8 +116,27 @@ const BoxItinierary = styledComponents.div`
 `;
 
 const Tour = () => {
-  const { slug } = useParams();
-  const tour = getTourBySlug(slug);
+  // const { slug } = useParams();
+  const location = useLocation();
+  const slugTour = location.pathname.split('/')[2];
+  const [tour, setTour] = useState({});
+  // const tour = getTourBySlug(slug);
+  useEffect(() => {
+    const getTour = async () => {
+      try {
+        const response = await publicRequest(`/api/tours/${slugTour}`);
+        setTour(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getTour();
+  }, [slugTour]);
+
+  const handleClick = () => {
+    alert('Add to Cart');
+  };
+
   return (
     <>
       <TourImages>
@@ -135,12 +156,19 @@ const Tour = () => {
                 <h3>{tour.title}</h3>
                 <span>
                   <FontAwesomeIcon icon={faClock} />
-                  {` ${tour.duration.days}D/${tour.duration.nights}N `}
+                  {` ${tour.days}D/${tour.nights}N `}
                 </span>
                 <span>
-                  {' from '}
-                  <FontAwesomeIcon icon={faDollarSign} />
-                  {` ${tour.price}/person `}
+                  {tour.categories.map((cat) => (
+                    <span>
+                      <FontAwesomeIcon icon={faPersonHiking} />
+                      {` ${cat} `}
+                    </span>
+                  ))}
+                </span>
+                <span style={{ textTransform: 'capitalize' }}>
+                  <FontAwesomeIcon icon={faSignal} />
+                  {` ${tour.level[0]} `}
                 </span>
               </SlideContent>
             </SwiperSlide>
@@ -158,11 +186,11 @@ const Tour = () => {
             <ContentIcons>
               <div className="day">
                 <FontAwesomeIcon icon={faSun} />
-                {` days: ${tour.duration.days} `}
+                {` days: ${tour.days} `}
               </div>
               <div className="night">
                 <FontAwesomeIcon icon={faMoon} />
-                {` nights: ${tour.duration.nights} `}
+                {` nights: ${tour.nights} `}
               </div>
               <div className="money">
                 <FontAwesomeIcon icon={faDollarSign} />
@@ -172,10 +200,10 @@ const Tour = () => {
                 <FontAwesomeIcon icon={faHeart} />
                 {' Add to Wishlist'}
               </Link>
-              <Link to="/" className="btn-primary">
+              <button type="button" onClick={handleClick} className="btn-primary">
                 <FontAwesomeIcon icon={faCartPlus} />
-                {' Add to Cart '}
-              </Link>
+                {' Add to Backpack'}
+              </button>
             </ContentIcons>
           </div>
         </BoxInformation>
