@@ -44,7 +44,6 @@ const ToursGridFilter = ({ category, filters, order }) => {
       setFilteredTours(filteredTours.sort((a, b) => a.days - b.days));
     }
   }, [order]);
-  console.log(category, filters, order);
   return (
     <GridWrapper>
       {category !== 'all'
