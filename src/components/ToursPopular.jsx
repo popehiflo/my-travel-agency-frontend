@@ -22,8 +22,8 @@ const ToursPopular = () => {
         <h1>POPULAR TOURS</h1>
       </div>
       <ToursGrid tours={tours} />
-      <Link to="/tours" className="btn-primary alltours">
-        Explore All Tours
+      <Link to="/tours/adventure" className="btn-primary alltours">
+        Explore More Tours
       </Link>
     </ToursPopularWrapper>
   );

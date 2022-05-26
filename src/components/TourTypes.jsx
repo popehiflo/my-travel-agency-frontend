@@ -145,7 +145,7 @@ const TourTypes = () => {
               <SlideBoxButton className="box-button">
                 <p>{typeTour.description}</p>
                 <div>
-                  <Link to="/tours" className="btn-primary" style={borderWhite}>
+                  <Link to={`/tours/${typeTour.cat}`} className="btn-primary" style={borderWhite}>
                     <FontAwesomeIcon icon={faSearch} />
                     {` ${typeTour.title}`}
                   </Link>

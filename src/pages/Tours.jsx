@@ -1,10 +1,12 @@
-import React from 'react';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styledComponents from 'styled-components';
-import ToursGrid from '../components/ToursGrid';
-import { getAllTours } from '../dataFake';
+// import ToursGrid from '../components/ToursGrid';
+import ToursGridFilter from '../components/ToursGridFilter';
+// import { getAllTours } from '../dataFake';
 
 const ToursWrapper = styledComponents.section`
-
+  padding-top: 8rem;
 `;
 
 const WrapperForm = styledComponents.div`
@@ -52,47 +54,76 @@ const FilterForm = styledComponents.form`
 // TODO: Add tours filter by category, pagination and sorting
 // FIXME: Temporal component to show the tours grid
 const Tours = () => {
-  const tours = getAllTours();
+  const location = useLocation();
+  const category = location.pathname.split('/')[2];
+  const categoryName = category.replace('-', ' ');
+  const [filters, setFilters] = useState({});
+  const [order, setOrder] = useState('desc');
+  const handlerFilters = (e) => {
+    const { value } = e.target;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
+  // const dataServer = getAllTours();
+  // const [tours, setTours] = useState(dataServer);
+  // const filterResult = (cat) => {
+  //   setTours(dataServer.filter((tour) => tour.category === cat));
+  // };
   return (
     <ToursWrapper id="tours">
       <div className="heading">
-        <span>BUSCA TUS TOURS</span>
-        <h1>CATEGORY 1 TOURS</h1>
+        <span>Looking for</span>
+        <h1 style={{ textTransform: 'uppercase' }}>
+          {categoryName}
+        </h1>
+        <span>type Tours</span>
       </div>
       <WrapperForm>
         <FilterForm>
           <div className="inputBox">
-            <label htmlFor="inp01">
-              where to?
-              <input type="text" placeholder="place name" value="" id="inp01" />
-            </label>
-          </div>
-          <div className="inputBox">
-            <label htmlFor="inp02">
-              when?
-              <select type="select" value="" id="inp02">
-                <option disabled selected>
-                  Color
-                </option>
-                <option>White</option>
-                <option>Black</option>
-                <option>Red</option>
-                <option>Blue</option>
-                <option>Yellow</option>
-                <option>Green</option>
+            <label htmlFor="selectcountry">
+              where?
+              <select defaultValue="" name="country" onChange={handlerFilters} id="selectcountry">
+                <option value="" disabled>COUNTRY</option>
+                <option>peru</option>
+                <option>bolivia</option>
+                <option>ecuador</option>
               </select>
             </label>
           </div>
           <div className="inputBox">
-            <label htmlFor="inp03">
-              how many?
-              <input type="number" placeholder="number of travelers" value="" id="inp03" />
+            <label htmlFor="selectlevel">
+              activity level
+              <select defaultValue="" name="level" onChange={handlerFilters} id="selectlevel">
+                <option value="" disabled>ACTIVITY LEVEL</option>
+                <option value="low">Low</option>
+                <option value="moderate">Moderate</option>
+                <option value="high">High</option>
+                <option value="very-high">Very High</option>
+              </select>
             </label>
           </div>
-          <input type="submit" value="find now" className="btn-primary" />
+          <div className="inputBox">
+            <label htmlFor="selectorder">
+              sort by duration:
+              <select type="select" name="order" onChange={(e) => setOrder(e.target.value)} id="selectorder">
+                <option value="asc">ascending</option>
+                <option value="desc">descending</option>
+              </select>
+            </label>
+          </div>
+          <button type="button" className="btn-primary">search now</button>
+          {/* <button type="button" className="btn-primary" onClick={()=>filterResult('adventure')}>
+            test filter
+          </button>
+          <button type="button" className="btn-primary" onClick={() => setTours(dataServer)}>
+            all Tours
+          </button> */}
         </FilterForm>
       </WrapperForm>
-      <ToursGrid tours={tours} />
+      <ToursGridFilter category={category} filters={filters} order={order} />
     </ToursWrapper>
   );
 };
