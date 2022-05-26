@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -7,9 +8,10 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Tour from './pages/Tour';
 import Tours from './pages/Tours';
+import Success from './pages/Success';
 
 const App = () => {
-  const userLogged = true;
+  const userLogged = useSelector((state) => state.user.currentUser);
   return (
     <BrowserRouter>
       <Header />
@@ -19,6 +21,7 @@ const App = () => {
         <Route path="/account/sign-in" element={userLogged ? <Navigate to="/" /> : <SignIn />} />
         <Route path="/account/sign-up" element={userLogged ? <Navigate to="/" /> : <SignUp />} />
         <Route path="/backpack" element={<Backpack />} />
+        <Route path="/backpack/success" element={<Success />} />
         <Route path="/tours/:category" element={<Tours />} />
         <Route path="/tour/:slug" element={<Tour />} />
         <Route path="/admin-panel" element={<h1 style={{ marginTop: '100px' }}>Admin Panel</h1>} />

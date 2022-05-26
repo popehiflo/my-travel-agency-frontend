@@ -1,9 +1,11 @@
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styledComponents from 'styled-components';
 import imgDefault from '../assets/imgs/default-image-urubamba.jpg';
+import signin from '../services/signRequest';
 
 const LoginWrapper = styledComponents.section`
   height: 100vh;
@@ -54,23 +56,49 @@ const FormInput = styledComponents.input`
   padding: 1rem 2rem;
 `;
 
-const SignIn = () => (
-  <LoginWrapper>
-    <FormLogin>
-      <h3>Sign In</h3>
-      <Link to="/" className="btn-primary">
-        <FontAwesomeIcon icon={faGoogle} />
-        {' Sign In with Google'}
-      </Link>
-      <hr style={{ border: '0.2rem solid var(--color-secondary)', margingBottom: '1rem' }} />
-      <p>Or</p>
-      <FormInput type="email" name="" placeholder="enter your email" />
-      <FormInput type="password" name="" placeholder="enter your password" />
-      <input type="submit" value="Sign In" className="btn-primary" />
-      <p>Do not have an account?</p>
-      <Link to="/account/sign-up" className="btn-secondary">Sign Up</Link>
-    </FormLogin>
-  </LoginWrapper>
-);
+const Error = styledComponents.span`
+  color: red;
+`;
+
+const SignIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    signin(dispatch, { email, password });
+  };
+  return (
+    <LoginWrapper>
+      <FormLogin>
+        <h3>Sign In</h3>
+        <Link to="/" className="btn-primary">
+          <FontAwesomeIcon icon={faGoogle} />
+          {' Sign In with Google'}
+        </Link>
+        <hr style={{ border: '0.2rem solid var(--color-secondary)', margingBottom: '1rem' }} />
+        <p>Or</p>
+        <FormInput
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="enter your email"
+        />
+        <FormInput
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="enter your password"
+        />
+        <button type="button" onClick={handleClick} disabled={isFetching} className="btn-primary">
+          Sign In
+        </button>
+        {error && <Error>Something went wrong...</Error>}
+        <p>Do not have an account?</p>
+        <Link to="/account/sign-up" className="btn-secondary">Sign Up</Link>
+      </FormLogin>
+    </LoginWrapper>
+  );
+};
 
 export default SignIn;

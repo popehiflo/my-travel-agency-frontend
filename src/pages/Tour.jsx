@@ -15,8 +15,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faClock, faDollarSign, faHeart, faPersonHiking, faSignal } from '@fortawesome/free-solid-svg-icons';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 // import { getTourBySlug } from '../dataFake';
+import { useDispatch } from 'react-redux';
 import Accordion from '../components/Accordion';
 import { publicRequest } from '../services/request';
+import { addTour } from '../redux/backpackRedux';
 
 const TourImages = styledComponents.div`
   padding: 0;
@@ -120,6 +122,7 @@ const Tour = () => {
   const location = useLocation();
   const slugTour = location.pathname.split('/')[2];
   const [tour, setTour] = useState({});
+  const dispatch = useDispatch();
   // const tour = getTourBySlug(slug);
   useEffect(() => {
     const getTour = async () => {
@@ -134,7 +137,9 @@ const Tour = () => {
   }, [slugTour]);
 
   const handleClick = () => {
-    alert('Add to Cart');
+    dispatch(
+      addTour({ ...tour, quantity: 1, price: tour.price, total: tour.price * 1 }),
+    );
   };
 
   return (
